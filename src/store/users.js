@@ -14,6 +14,9 @@
 //}
 
 //reducer
+export default function reducer(state={} ,action){
+    return state
+}
 
 //export default function reducer(state={}, action)
 //switch(action.type) {
