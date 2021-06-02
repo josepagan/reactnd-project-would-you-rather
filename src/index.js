@@ -14,6 +14,8 @@ ReactDOM.render(
   document.getElementById('root')
 );
 console.log('store:',store.getState())
+store.dispatch({type: 'users/usersFetched', payload:{users:"shitlots of users here"}})
+console.log('store:',store.getState())
 
 db._getUsers().then(data => console.log(data))
 // If you want to start measuring performance in your app, pass a function
