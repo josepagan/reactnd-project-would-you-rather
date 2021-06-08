@@ -17,7 +17,7 @@ store.dispatch({type: 'apiCallBegan', payload:{
   feature: 'users',
   method: 'get',
   data: {},
-  onSuccess: 'usersReceived',
+  onSuccess: 'users/usersReceived',
   onError: 'apiRequestfailed'
 }})
 console.log('store:',store.getState())

@@ -15,9 +15,9 @@
 
 //reducer
 export default function reducer(state={} ,action){
+    console.log('action:', action)
     switch (action.type){
-        case 'users/usersFetched':{
-            //because we are not 
+        case 'users/usersReceived':{
             return action.payload
         } 
        }

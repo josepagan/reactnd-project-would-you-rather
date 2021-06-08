@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 //Action Types
 const AUTHED_USER="authedUser";
 
