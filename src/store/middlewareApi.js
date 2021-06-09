@@ -2,7 +2,7 @@
 
 
 import {_getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer} from '../_DATA'
-
+//TODO since alll calls are quite similar I should try to create a generic functio with composion
 const callGetUsers = async (dispatch, onSuccess, onError) => {
     try {
         //add here a switch case with method so depending of get or whatever

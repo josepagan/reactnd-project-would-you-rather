@@ -12,15 +12,46 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-console.log('store:',store.getState())
-store.dispatch({type: 'apiCallBegan', payload:{
-  feature: 'users',
-  method: 'get',
-  data: {},
-  onSuccess: 'users/usersReceived',
-  onError: 'apiRequestfailed'
-}})
-console.log('store:',store.getState())
+console.log('store:', store.getState())
+store.dispatch({
+  type: 'apiCallBegan', payload: {
+    feature: 'users',
+    method: 'get',
+    data: {},
+    onSuccess: 'users/usersReceived',
+    onError: 'apiRequestfailed'
+  }
+})
+
+store.dispatch({
+  type: 'apiCallBegan', payload: {
+    feature: 'questions',
+    method: 'get',
+    data: {},
+    onSuccess: 'questions/questionsReceived',
+    onError: 'apiRequestfailed'
+  }
+})
+
+store.dispatch({
+  type: 'apiCallBegan', payload: {
+    feature: 'questions',
+    method: 'post',
+    data: {
+      question:{
+        optionOneText:"ying" ,
+        optionTwoText: "yang",
+        author: "helenfoneing"
+      }
+    },
+    onSuccess: 'questions/questionAdded',
+    onError: 'apiRequestfailed'
+  }
+})
+
+
+
+console.log('store:', store.getState())
 
 // db._getUsers().then(data => console.log(data))
 
