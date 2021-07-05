@@ -3,6 +3,14 @@
 
 import {_getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer} from '../_DATA'
 //TODO since alll calls are quite similar I should try to create a generic functio with composion
+
+// const answerObj = {
+//             authedUser: 'helenfoneing',
+//             qid:"am8ehyc8byjqgar0jgpub9",
+//             answer: "optionTwo"
+//           }
+
+// _saveQuestionAnswer(answerObj).then(res=>console.log("RES", res))
 const callGetUsers = async (dispatch, onSuccess, onError) => {
     try {
         //add here a switch case with method so depending of get or whatever
@@ -47,9 +55,21 @@ const callSaveQuestion = async (data, dispatch, onSuccess, onError) => {
 
 const callSaveQuestionAnswer = async (data, dispatch, onSuccess, onError) => {
     try {
-        const { authedUser, qid, answer } = data
+        const { answer } = data
         //add here a switch case with method so depending of get or whatever
-        const response =  await _saveQuestionAnswer( authedUser, qid, answer)
+        const response =  await _saveQuestionAnswer( answer )
+
+        //we dont get anything from server so we will use the data from apiCallBegan  to fill the state.
+        //that means that the data on the website will only be update once the onSuccess dispatch happens, so there will be
+        //a delay
+        //TODO consider to change the design to 'optimistic' so the store update  happens first 
+        // and get an error message afterwards if we dont get a positive 
+        //response from the server.
+        //
+
+        //since we already have all the information I should not need to pick it from the response,
+        //I could just use the answer object
+        //eventually i have to investigate how to use this properly
         dispatch({type: onSuccess, payload: response})    
     }
     catch (error){
@@ -71,7 +91,7 @@ const api = store => next => action => {
     if (feature === "users" && method === "get") callGetUsers(dispatch, onSuccess, onError)
     else if (feature === "questions" && method === "get") callGetQuestions(dispatch, onSuccess, onError)
     else if (data && feature === "questions" && method === "post") callSaveQuestion(data, dispatch, onSuccess, onError)
-    else if ( data && feature === "questionAnswer" && method === "post") callSaveQuestionAnswer(data, dispatch, onSuccess, onError)
+    else if ( data && feature === "answer" && method === "post") callSaveQuestionAnswer(data, dispatch, onSuccess, onError)
     // {
     //     try {
     //         //add here a switch case with method so depending of get or whatever
@@ -84,7 +104,6 @@ const api = store => next => action => {
     //     }
 
     // }
-    
     
 }
 export default api;

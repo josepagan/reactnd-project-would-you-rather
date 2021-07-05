@@ -13,7 +13,6 @@ export default function reducer(state={},action){
             return action.payload
         }
         case 'questions/questionAdded':{
-            //TODO concat the new question to the list of actions, find a way to do it 
             return produce(state, (newState)=>{
                 newState[action.payload.id] = action.payload
             })

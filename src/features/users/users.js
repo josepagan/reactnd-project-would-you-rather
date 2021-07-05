@@ -1,4 +1,11 @@
+// import { QuestionAnswer } from '@material-ui/icons';
+/* eslint-disable no-unused-vars */
+
+
+// import produce from 'immer';
 //Action types
+
+import produce from "immer"
 
 //const BUG_ADDED="bugAdded"
 
@@ -19,7 +26,21 @@ export default function reducer(state={} ,action){
     switch (action.type){
         case 'users/usersReceived':{
             return action.payload
-        } 
+        }
+        case 'users/questionAnswered':{
+           const {authedUser, qid, answer} = action.payload
+           console.log('response action', action.payload)
+
+            //I think this does not work because somehow it updates before than anythng else.
+            //iit says... Type error, new state is undefined
+
+            return produce(state, (newState=>{
+                newState[authedUser].answers[qid]=answer
+            }))
+
+            //TODO maybe here i have to dispatch to quiestons to add the voted users to the list???
+
+        }
        }
 
     return state
