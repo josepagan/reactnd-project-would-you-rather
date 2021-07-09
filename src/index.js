@@ -9,12 +9,15 @@ import reportWebVitals from './reportWebVitals';
 import store from './store/store'
 import { Provider } from 'react-redux';
 import * as actions from './store/api'
+import { BrowserRouter as Router } from "react-router-dom";
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+      <Router>
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
@@ -37,6 +40,15 @@ store.dispatch(actions.apiCallBegan({
   onError: 'apiRequestfailed'
 }
 ))
+// change this asap
+store.dispatch(actions.apiCallBegan({
+  callMethodName: '_getQuestions',
+  data: {},
+  onSuccess: 'questions/questionsReceived',
+  onError: 'apiRequestfailed'
+
+}
+))
 
 
 // store.dispatch({
@@ -56,8 +68,8 @@ store.dispatch(actions.apiCallBegan({
 //     feature: 'questions',
 //     method: 'get',
 //     data: {},
-//     onSuccess: 'questions/questionsReceived',
-//     onError: 'apiRequestfailed'
+// onSuccess: 'questions/questionsReceived',
+// onError: 'apiRequestfailed'
 //   }
 // })
 
