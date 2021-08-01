@@ -1,43 +1,7 @@
 /* eslint-disable no-unused-vars */
 
-
+//TODO delete all these old methods once im sure they are not necesary
 import { _getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer } from '../_DATA'
-//TODO since alll calls are quite similar I should try to create a generic functio with composion
-
-// const answerObj = {
-//             authedUser: 'helenfoneing',
-//             qid:"am8ehyc8byjqgar0jgpub9",
-//             answer: "optionTwo"
-//           }
-
-// _saveQuestionAnswer(answerObj).then(res=>console.log("RES", res))
-
-
-// const apiCall = async (dispatch, onSuccess, onError, callMethodName, data = undefined) => {
-//     const callMethod = new Function(`return ${callMethodName}`)
-//     try {
-//         const response = await callMethod()
-//         dispatch({ type: onSuccess, payload: response })
-
-//     }
-//     catch (error) {
-//         dispatch({ type: onError, payload: error })
-//     }
-// }
-
-
-// const callGetUsers = async (dispatch, onSuccess, onError) => {
-//     try {
-//         //add here a switch case with method so depending of get or whatever
-//         const response = await _getUsers()
-//         dispatch({ type: onSuccess, payload: response })
-//     }
-//     catch (error) {
-//         dispatch({ type: onError, payload: error })
-
-//     }
-
-// }
 
 const callGetQuestions = async (dispatch, onSuccess, onError) => {
     try {
@@ -47,26 +11,20 @@ const callGetQuestions = async (dispatch, onSuccess, onError) => {
     }
     catch (error) {
         dispatch({ type: onError, payload: error })
-
     }
-
 }
 
 const callSaveQuestion = async (data, dispatch, onSuccess, onError) => {
     try {
         const { question } = data
-
         //add here a switch case with method so depending of get or whatever
         const response = await _saveQuestion(question)
         dispatch({ type: onSuccess, payload: response })
     }
     catch (error) {
         dispatch({ type: onError, payload: error })
-
     }
-
 }
-
 
 const callSaveQuestionAnswer = async (data, dispatch, onSuccess, onError) => {
     try {
@@ -80,6 +38,7 @@ const callSaveQuestionAnswer = async (data, dispatch, onSuccess, onError) => {
         //TODO consider to change the design to 'optimistic' so the store update  happens first 
         // and get an error message afterwards if we dont get a positive 
         //response from the server.
+        // to make it optimistic: just go ahead dispatching it and then 
         //
 
         //since we already have all the information I should not need to pick it from the response,
@@ -89,11 +48,9 @@ const callSaveQuestionAnswer = async (data, dispatch, onSuccess, onError) => {
     }
     catch (error) {
         dispatch({ type: onError, payload: error })
-
     }
 }
 
-//TODO complete this with all api calls
 const apiCalls = {
     _getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer
 }
@@ -118,10 +75,5 @@ const api = store => next => async action => {
         dispatch({ type: onError, payload: error })
     }
 
-    //DO NOT DELETE:
-    // if (feature === "users" && method === "get") callGetUsers(dispatch, onSuccess, onError)
-    // else if (feature === "questions" && method === "get") callGetQuestions(dispatch, onSuccess, onError)
-    // else if (data && feature === "questions" && method === "post") callSaveQuestion(data, dispatch, onSuccess, onError)
-    // else if ( data && feature === "answer" && method === "post") callSaveQuestionAnswer(data, dispatch, onSuccess, onError)
 }
 export default api;

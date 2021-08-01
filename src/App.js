@@ -10,21 +10,11 @@ import { Link, Route, Switch, useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 //  import './App.css';
-
-
-
-
 const LinkComponent = () => {
-
-
-
-
   return (<h1>
     LinkComponent is here here is all the shit
   </h1>)
 }
-
-
 
 const selectShit = state => state
 
@@ -35,38 +25,37 @@ function App() {
   const dispatch = useDispatch();
   let history = useHistory()
 
-
-
   console.log("store from App component", shit)
 
   useEffect(() => {
-    return history.listen((location) => { 
-       console.log(`You changed the page to: ${location.pathname}`) 
-    }) 
- },[history]) 
+    return history.listen((location) => {
+      console.log(`You changed the page to: ${location.pathname}`)
+    })
+  }, [history])
 
   return (
     <>
-
       <Navbar bg="light" expand="lg">
-        <LinkContainer to={"/"}>
-          <Navbar.Brand>React-Bootstrap</Navbar.Brand>
-        </LinkContainer>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            {/* LinkContainer wrapper adds react-router features of Link while keeping style of Nav.link */}
-            <LinkContainer to={"/"}>
-              <Nav.Link>Home</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to={"/link-container"}>
-              <Nav.Link>Home</Nav.Link>
-            </LinkContainer>
+        <Container>
+          <LinkContainer to={"/"}>
+            <Navbar.Brand>Would You Rather...</Navbar.Brand>
+          </LinkContainer>
+          <Nav variant="tabs">
 
+          <LinkContainer to={"/link-container"}>
+            <Nav.Link>Home</Nav.Link>
+          </LinkContainer>
           </Nav>
-        </Navbar.Collapse>
-      </Navbar>
 
+
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text>
+              Signed in as: <a href="#login">Mark Otto</a>
+            </Navbar.Text>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
       <Container >
         <h1>OMG main container</h1>
