@@ -33,22 +33,26 @@ console.log('store:', store.getState())
 //     }
 // ))
 
-store.dispatch(actions.apiCallBegan({
-  callMethodName: '_getUsers',
-  data: {},
-  onSuccess: 'users/usersReceived',
-  onError: 'apiRequestfailed'
-}
-))
-// change this asap
-store.dispatch(actions.apiCallBegan({
-  callMethodName: '_getQuestions',
-  data: {},
-  onSuccess: 'questions/questionsReceived',
-  onError: 'apiRequestfailed'
 
-}
-))
+
+// store.dispatch(actions.apiCallBegan({
+//   callMethodName: '_getUsers',
+//   data: {},
+//   onSuccess: 'users/usersReceived',
+//   onError: 'apiRequestfailed'
+// }
+// ))
+// // change this asap
+// store.dispatch(actions.apiCallBegan({
+//   callMethodName: '_getQuestions',
+//   data: {},
+//   onSuccess: 'questions/questionsReceived',
+//   onError: 'apiRequestfailed'
+
+// }
+// ))
+
+
 
 
 // store.dispatch({

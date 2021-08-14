@@ -7,6 +7,14 @@ const AUTHED_USER="authedUser";
 
 
 //reducer
-export default function reducer(state="joseid1",action){
+export default function reducer(state="",action){
+    switch (action.type) {
+        case 'auth/authedUser':{
+            return action.payload
+        }
+        case 'auth/logoutClicked':{
+            return ""
+        }
+    }
     return state
 }
