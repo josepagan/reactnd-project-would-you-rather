@@ -23,5 +23,4 @@ export function init() {
     payload: "helenfoening"
   })
 
-  //TODO add also here a dispatch to the default auth user
 }

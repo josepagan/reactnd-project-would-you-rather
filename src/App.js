@@ -11,74 +11,79 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link, Route, Switch, useHistory, Redirect } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { init } from './store/utils';
+import MainContainer from './components/layout/MainContainer'
+import LoginForm from './components/LoginForm';
+import PrivateRoute from './components/routing/PrivateRoute';
+
 
 //  import './App.css';
-const LinkComponent = () => {
-  return (<h1>
-    LinkComponent is here here is all the shit
-  </h1>)
-}
-useEffect
-const LoginForm = () => {
-  return (
-    <div>LOGIN FORM</div>
-  )
-}
+// const NewQuestionForm = () => {
+//   return (<h1>
+//     NEW QUESTION FORM HERE
+//   </h1>)
+// }
+// const LoginForm = () => {
+//   return (
+//     <div>LOGIN FORM</div>
+//   )
+// }
 
 
-const MainContainer = () => {
-  const authed = useSelector(state => state.auth)
+// const MainContainerz = () => {
+//   const authed = useSelector(state => state.auth)
 
-  return (
-    <Container >
-      <div>main container</div>
-      <Switch>
-        <Route exact path="/">
-          {authed ? <Redirect to="/questions" /> : <LoginForm />}
-        </Route>
-        <Route path={"/link-container"}>
-          <LinkComponent />
-        </Route>
-        <Route path={"/login"}>
-          <LoginForm />
-        </Route>
-        <PrivateRoute path={"/questions"}>
-          <Questions />
+//   return (
+//     <Container >
+//       <div>main container</div>
+//       <Switch>
+//         <Route exact path="/">
+//           {authed ? <Redirect to="/questions" /> : <LoginForm />}
+//         </Route>
+//         <PrivateRoute path={"/new-question"}>
+//           <NewQuestionForm />
+//         </PrivateRoute>
+//         <Route path={"/login"}>
+//           <LoginForm />
+//         </Route>
+//         <PrivateRoute path={"/questions"}>
+//           <Questions />
 
-        </PrivateRoute>
-      </Switch>
-    </Container>
-  )
-}
-const Questions = ()=>{
-  return <div>PRIVATE QUESTIONS PRIVATE</div>
-}
+//         </PrivateRoute>
+//       </Switch>
+//     </Container>
+//   )
+// }
+// const Questions = () => {
+//   return <div>PRIVATE QUESTIONS PRIVATE</div>
+// }
 const selectShit = state => state
 
 //TODO use react reduct to dispatch anything using the button just created, 
 
 //shamelesly stolen from react-router tutorial
-function PrivateRoute({ children, ...rest }) {
-  let auth = useSelector(state => state.auth)
+// const PrivateRoute = ({ children, ...rest }) => {
+//   let auth = useSelector(state => state.auth)
 
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        auth ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location }
-            }}
-          />
-        )
-      }
-    />
-  );
-}
+//   return (
+//     <Route
+//       {...rest}
+//       render={({ location }) =>
+//         auth ? (
+//           children
+//         ) : (
+//           <Redirect
+//             to={{
+//               pathname: "/login",
+//               state: { from: location }
+//             }}
+//           />
+//         )
+//       }
+//     />
+//   );
+// }
+
+
 
 
 
@@ -111,9 +116,9 @@ function App() {
           <Nav variant="tabs">
 
             <LinkContainer to={"/"}>
-              <Nav.Link>Home</Nav.Link>
+              {/* <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-            <LinkContainer to={"/link-container"}>
+            <LinkContainer to={"/new-question"}> */}
               <Nav.Link>New Question</Nav.Link>
             </LinkContainer>
             <LinkContainer to={"/link-container"}>
