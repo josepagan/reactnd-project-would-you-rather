@@ -41,9 +41,10 @@ export default function reducer(state={} ,action){
             //TODO maybe here i have to dispatch to quiestons to add the voted users to the list???
 
         }
+        default:
+            return state
        }
 
-    return state
 }
 
 //export default function reducer(state={}, action)

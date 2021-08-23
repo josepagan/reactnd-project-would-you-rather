@@ -20,7 +20,7 @@ export function init() {
 
   store.dispatch({
     type: 'auth/authedUser',
-    payload: "helenfoening"
+    payload: "helenfoneing"
   })
 
 }

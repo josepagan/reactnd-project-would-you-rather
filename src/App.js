@@ -87,13 +87,17 @@ const selectShit = state => state
 
 
 
-
 function App() {
-  const shit = useSelector(selectShit)
+  const select = state => {
+    return state.users[state.auth]
+  }
+  const authedUser = useSelector(select)
+//TODO learn to use selectors properly
+console.log("authedUser", authedUser)
+
   const dispatch = useDispatch();
   let history = useHistory()
 
-  console.log("store from App component", shit)
 
   useEffect(() => {
     return history.listen((location) => {
