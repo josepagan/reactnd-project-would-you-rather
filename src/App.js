@@ -91,24 +91,35 @@ function App() {
   const select = state => {
     return state.users[state.auth]
   }
-  const authedUser = useSelector(select)
-//TODO learn to use selectors properly
-console.log("authedUser", authedUser)
+
+  //solution to avoid rendering problem when authedUser is undefined
+  //maybe find a better solution as this is not functional and a bit too imperative
+  //for my liking
+
+  let authedUser = useSelector(select)
+  if (authedUser === undefined) {
+    authedUser = {};
+    authedUser.name === "Mr. Undefined"
+  }
+
+  //TODO learn to use selectors properly
+  console.log("authedUser", authedUser)
 
   const dispatch = useDispatch();
   let history = useHistory()
 
 
-  useEffect(() => {
-    return history.listen((location) => {
-      console.log(`You changed the page to: ${location.pathname}`)
-    })
-  }, [history])
+  // useEffect(() => {
+  //   return history.listen((location) => {
+  //     console.log(`You changed the page to: ${location.pathname}`)
+  //   })
+  // }, [history])
 
   //data initialising
   useEffect(() => {
     init()
   }, [])
+  // if (!authedUser) return null
 
   return (
     <>
@@ -138,11 +149,23 @@ console.log("authedUser", authedUser)
             {/* div required so {' '} works for spacing user and logout button */}
             {/* //TODO make this div a proper component */}
             <div>
-              <Navbar.Text>
-                Signed in as: <a href="#login">Mark Otto</a>
-              </Navbar.Text>
-              {' '}
-              <Button variant="dark" size="sm" onClick={() => { dispatch({ type: 'auth/logoutClicked' }) }}>Logout</Button>
+              {
+                authedUser ?
+                  (
+                    <div>
+                      <Navbar.Text>
+                        Signed in as: <a href="#login">{authedUser.name}</a>
+                      </Navbar.Text>
+                      {' '}
+                      <Button variant="dark" size="sm" onClick={() => { dispatch({ type: 'auth/logoutClicked' }) }}>Logout</Button>
+                    </div>
+                    // TODO this is not rendering as expected, I suspect I have to refactor navbar to behave properly
+                  ) : <div>Not Logged in at all wtf mate</div>
+
+              }
+              {/* <Navbar.Text>
+                Signed in as: <a href="#login">{authedUser.name}</a>
+              </Navbar.Text> */}
             </div>
 
           </Navbar.Collapse>
