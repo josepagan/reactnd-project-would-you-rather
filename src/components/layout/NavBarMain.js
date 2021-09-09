@@ -28,7 +28,7 @@ export default function NavBarMain() {
   //maybe find a better solution as this is not functional and a bit too imperative
   //for my liking
 
-  // let authedUser = useSelector(select)
+  const authedUser = useSelector(select)
   // if (authedUser === undefined) {
   //   authedUser = {};
   //   authedUser.name === "Mr. Undefined"
