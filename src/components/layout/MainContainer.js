@@ -26,7 +26,7 @@ const MainContainer = () => {
         <PrivateRoute path={"/new-question"}>
           <NewQuestionForm />
         </PrivateRoute>
-        <Route path={"/login"}>
+        <Route exact path={"/login"}>
           <LoginForm />
         </Route>
         <PrivateRoute path={"/questions"}>
