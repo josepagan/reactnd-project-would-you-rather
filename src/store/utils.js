@@ -18,9 +18,9 @@ export function init() {
   }
   ))
 
-  store.dispatch({
-    type: 'auth/authedUser',
-    payload: "helenfoneing"
-  })
+  // store.dispatch({
+  //   type: 'auth/authedUser',
+  //   payload: "helenfoneing"
+  // })
 
 }

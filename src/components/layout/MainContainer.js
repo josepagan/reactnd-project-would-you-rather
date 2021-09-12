@@ -19,7 +19,6 @@ const MainContainer = () => {
     <Container >
       <div>main container</div>
       <Switch>
-        {/* this kinda make sense but not sure if it is necessary at all */}
         <Route exact path="/">
           {authed ? <Redirect to="/questions" /> : <LoginForm />}
         </Route>
@@ -27,11 +26,10 @@ const MainContainer = () => {
           <NewQuestionForm />
         </PrivateRoute>
         <Route exact path={"/login"}>
-          <LoginForm />
+          {authed ? <Redirect to="/questions" /> : <LoginForm />}
         </Route>
         <PrivateRoute path={"/questions"}>
           <Questions />
-
         </PrivateRoute>
       </Switch>
     </Container>
