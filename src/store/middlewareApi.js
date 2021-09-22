@@ -62,13 +62,22 @@ const api = store => next => async action => {
     next(action)
     const { dispatch } = store;
 
-    const { callMethodName, url, feature, method, data, onSuccess, onError, apiCall } = action.payload;
+    const { callMethodName, url, feature, method, data, onError, apiCall } = action.payload;
+    let { onSuccess } = action.payload;
+    //onsuccess now will be an array of actions to call , wrap it in an array.
+    if (typeof (onSuccess) === 'string') onSuccess = [onSuccess]
 
 
     try {
+        //TODO consider to make it optimistic (first update store, then if data all right let it go if not get error)
         //callMethodName(string) gets the right method reference from apicalls
         const response = await apiCalls[callMethodName](data)
-        dispatch({ type: onSuccess, payload: response })
+        console.log('response', response)
+        onSuccess.forEach(element => {
+            dispatch({ type: element, payload: response })
+
+        });
+        // dispatch({ type: onSuccess, payload: response })
 
     }
     catch (error) {

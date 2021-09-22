@@ -27,6 +27,12 @@ export default function reducer(state={} ,action){
         case 'users/usersReceived':{
             return action.payload
         }
+        case 'users/questionAdded':{
+            const {authedUser, id} = action.payload
+            return produce(state, (newState => {
+                newState[authedUser].questions.push(id)
+            }))
+        }
         case 'users/questionAnswered':{
            const {authedUser, qid, answer} = action.payload
            console.log('response action', action.payload)
