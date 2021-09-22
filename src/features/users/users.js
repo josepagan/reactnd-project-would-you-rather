@@ -28,9 +28,10 @@ export default function reducer(state={} ,action){
             return action.payload
         }
         case 'users/questionAdded':{
-            const {authedUser, id} = action.payload
+            const {author, id} = action.payload
+            console.log('payload  in user reducer question added ', action.payload)
             return produce(state, (newState => {
-                newState[authedUser].questions.push(id)
+                newState[author].questions.push(id)
             }))
         }
         case 'users/questionAnswered':{
