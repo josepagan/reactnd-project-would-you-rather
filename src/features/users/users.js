@@ -29,14 +29,12 @@ export default function reducer(state={} ,action){
         }
         case 'users/questionAdded':{
             const {author, id} = action.payload
-            console.log('payload  in user reducer question added ', action.payload)
             return produce(state, (newState => {
                 newState[author].questions.push(id)
             }))
         }
         case 'users/questionAnswered':{
            const {authedUser, qid, answer} = action.payload
-           console.log('response action', action.payload)
 
             //I think this does not work because somehow it updates before than anythng else.
             //iit says... Type error, new state is undefined
