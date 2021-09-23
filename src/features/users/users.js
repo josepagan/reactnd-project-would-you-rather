@@ -22,7 +22,7 @@ import produce from "immer"
 
 //reducer
 export default function reducer(state={} ,action){
-    console.log('action:', action)
+    // console.log('action:', action)
     switch (action.type){
         case 'users/usersReceived':{
             return action.payload

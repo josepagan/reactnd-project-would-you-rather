@@ -1,39 +1,71 @@
 /* eslint-disable no-unused-vars */
+/* eslint react/prop-types: 0 */
+
 
 import { React } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import PropTypes from 'prop-types';
 
-//TODO remember all the proptypes palaver
 
-const UnansweredQuestions = ({ questions }) => {
+const UnansweredQuestions = ({ questionsIds }) => {
   return <div>
     <div>UnansweredQuestions</div>
   </div>
 }
-const AnsweredQuestions = ({ questions }) => {
-    const questionList = questions.map(el=><div>el</div>)
+//TODO figure out why eslint does not like the proptypes
+//TODO remember all the proptypes palaver
+
+UnansweredQuestions.PropTypes = {
+  questions: PropTypes.object.isRequired
+}
+
+const Question = ({ id }) => {
+  // const pickQuestionbyId = (state, id) => {
+  //   // console.log(state.questions[id])
+  //   return null
+  // }
+  const questionObj = useSelector((state, id) => {
+
+    //apparently it is the ID what it appears as undefined, investigate what this is
+    console.log("DEBUG", state.questions, id, state.questions[id])
+    return state.questions[id]
+  })
+  // console.log("DEBUG", state.questions)
+  return (<div>{id}</div>)
+}
+
+
+const AnsweredQuestions = ({ questionsIds }) => {
+  const questionList = questionsIds.map(id => <Question key={id} id={id}>{id}</Question>)
   return <div>
     <div>AnsweredQuestions</div>
     {questionList}
   </div>
 }
+
+AnsweredQuestions.PropTypes = {
+  questions: PropTypes.object.isRequired
+}
+
 const Questions = () => {
 
   // must contain list of all questions
   // 2 different views , answered by user and unanswered by user
   //unanswered by default
 
+  //TODO this probably creates a reference, so its not good according to redux tutorial
   const select = state => Object.keys(state.questions)
-  const questions = useSelector(select)
+  const questionsIds = useSelector(select)
 
-  console.log("questions from component", Object.keys(questions))
+  console.log("questions from useSelector", questionsIds)
 
   return <div>
     PRIVATE QUESTIONS PRIVATE
     {/* TODO create some sort of conditional rendering
     it has display unanswered by default but toggling must be a feature */}
-    <UnansweredQuestions questions />
-    <AnsweredQuestions questions />
+    <UnansweredQuestions questionsIds={questionsIds} />
+    <AnsweredQuestions questionsIds={questionsIds} />
+    {/* <AnsweredQuestions /> */}
   </div>
 
 }

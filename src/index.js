@@ -22,7 +22,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-console.log('store:', store.getState())
+// console.log('store:', store.getState())
 
 // store.dispatch(actions.apiCallBegan({
 //       feature: 'users',
