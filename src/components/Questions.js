@@ -20,18 +20,16 @@ UnansweredQuestions.PropTypes = {
 }
 
 const Question = ({ id }) => {
-  // const pickQuestionbyId = (state, id) => {
-  //   // console.log(state.questions[id])
-  //   return null
-  // }
-  const questionObj = useSelector((state, id) => {
-
-    //apparently it is the ID what it appears as undefined, investigate what this is
-    console.log("DEBUG", state.questions, id, state.questions[id])
-    return state.questions[id]
-  })
-  // console.log("DEBUG", state.questions)
-  return (<div>{id}</div>)
+  const questionObj = useSelector(state => state.questions[id])
+  const {author, optionOne, optionTwo} = questionObj
+  const {votes: optionOneVotes, text: optionOneText} = optionOne
+  const {votes: optionTwoVotes, text: optionTwoText} = optionTwo
+  console.log(optionOne, optionOneVotes, optionOneText)
+  return (<div>Would you
+    <div>{optionOneText}</div>
+    <div>{optionTwoText}</div>
+    <div>author: {author}</div>
+  </div>)
 }
 
 
