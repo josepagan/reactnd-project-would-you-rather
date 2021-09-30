@@ -7,27 +7,22 @@ import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types';
 
 
-const UnansweredQuestions = ({ questionsIds }) => {
-  return <div>
-    <div>UnansweredQuestions</div>
-  </div>
-}
+
 //TODO figure out why eslint does not like the proptypes
 //TODO remember all the proptypes palaver
 
-UnansweredQuestions.PropTypes = {
-  questions: PropTypes.object.isRequired
-}
+
 
 const Question = ({ id }) => {
   const questionObj = useSelector(state => state.questions[id])
   const { author, optionOne, optionTwo } = questionObj
   const { votes: optionOneVotes, text: optionOneText } = optionOne
   const { votes: optionTwoVotes, text: optionTwoText } = optionTwo
-  console.log(optionOne, optionOneVotes, optionOneText)
-  return (<div>Would you
-    <div>{optionOneText}</div>
-    <div>{optionTwoText}</div>
+
+  // console.log(optionOne, optionOneVotes, optionOneText)
+  return (<div><span style={{color:"gray"}}>Would you...
+    </span><div>1.{optionOneText}</div>
+    <div>2.{optionTwoText}</div>
     <div>author: {author}</div>
   </div>)
 }
@@ -52,11 +47,8 @@ const Questions = () => {
   //unanswered by default
 
   //TODO this probably creates a reference, so its not good according to redux tutorial
-  const select = state => {
-    return Object.keys(state.questions)
-  }
 
-  const selectPlus = state => {
+  const select = state => {
     const user = state.auth
     const questions = Object.values(state.questions)
 
@@ -67,11 +59,8 @@ const Questions = () => {
       }
       else {
         previous.unansweredQuestions.push(current.id)
-
       }
       return previous
-
-
     }, {
       unansweredQuestions: [],
       answeredQuestions: []
@@ -79,9 +68,7 @@ const Questions = () => {
     return result
   }
 
-  const { unansweredQuestions, answeredQuestions } = useSelector(selectPlus)
-
-
+  const { unansweredQuestions, answeredQuestions } = useSelector(select)
 
   return <div>
     PRIVATE QUESTIONS PRIVATE
