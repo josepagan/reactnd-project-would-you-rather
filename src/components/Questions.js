@@ -21,9 +21,9 @@ UnansweredQuestions.PropTypes = {
 
 const Question = ({ id }) => {
   const questionObj = useSelector(state => state.questions[id])
-  const {author, optionOne, optionTwo} = questionObj
-  const {votes: optionOneVotes, text: optionOneText} = optionOne
-  const {votes: optionTwoVotes, text: optionTwoText} = optionTwo
+  const { author, optionOne, optionTwo } = questionObj
+  const { votes: optionOneVotes, text: optionOneText } = optionOne
+  const { votes: optionTwoVotes, text: optionTwoText } = optionTwo
   console.log(optionOne, optionOneVotes, optionOneText)
   return (<div>Would you
     <div>{optionOneText}</div>
@@ -33,15 +33,15 @@ const Question = ({ id }) => {
 }
 
 
-const AnsweredQuestions = ({ questionsIds }) => {
+const QuestionsList = ({ questionsIds, type }) => {
   const questionList = questionsIds.map(id => <Question key={id} id={id}>{id}</Question>)
   return <div>
-    <div>AnsweredQuestions</div>
+    <h2>{type}</h2>
     {questionList}
   </div>
 }
 
-AnsweredQuestions.PropTypes = {
+QuestionsList.PropTypes = {
   questions: PropTypes.object.isRequired
 }
 
@@ -52,17 +52,43 @@ const Questions = () => {
   //unanswered by default
 
   //TODO this probably creates a reference, so its not good according to redux tutorial
-  const select = state => Object.keys(state.questions)
-  const questionsIds = useSelector(select)
+  const select = state => {
+    return Object.keys(state.questions)
+  }
 
-  console.log("questions from useSelector", questionsIds)
+  const selectPlus = state => {
+    const user = state.auth
+    const questions = Object.values(state.questions)
+
+    const result = questions.reduce((previous, current) => {
+      const questionAnswerers = [...current.optionOne.votes, ...current.optionTwo.votes]
+      if (questionAnswerers.includes(user)) {
+        previous.answeredQuestions.push(current.id)
+      }
+      else {
+        previous.unansweredQuestions.push(current.id)
+
+      }
+      return previous
+
+
+    }, {
+      unansweredQuestions: [],
+      answeredQuestions: []
+    })
+    return result
+  }
+
+  const { unansweredQuestions, answeredQuestions } = useSelector(selectPlus)
+
+
 
   return <div>
     PRIVATE QUESTIONS PRIVATE
     {/* TODO create some sort of conditional rendering
     it has display unanswered by default but toggling must be a feature */}
-    <UnansweredQuestions questionsIds={questionsIds} />
-    <AnsweredQuestions questionsIds={questionsIds} />
+    <QuestionsList questionsIds={unansweredQuestions} type="Unanswered Questions" />
+    <QuestionsList questionsIds={answeredQuestions} type="Answered Questions"/>
     {/* <AnsweredQuestions /> */}
   </div>
 
