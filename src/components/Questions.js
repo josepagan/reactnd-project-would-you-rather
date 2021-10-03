@@ -1,50 +1,26 @@
 /* eslint-disable no-unused-vars */
 
-import { React } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { React, useState } from 'react';
+import { useSelector } from 'react-redux'
 import QuestionsList from './QuestionList';
 import { questionsIds } from '../features/questions/questions';
+import { Button } from 'bootstrap';
 
 const Questions = () => {
 
-  // must contain list of all questions
-  // 2 different views , answered by user and unanswered by user
-  //unanswered by default
-
-  //TODO this probably creates a reference, so its not good according to redux tutorial
-
-  const select = state => {
-    const user = state.auth
-    const questions = Object.values(state.questions)
-
-    const result = questions.reduce((previous, current) => {
-      const questionAnswerers = [...current.optionOne.votes, ...current.optionTwo.votes]
-      if (questionAnswerers.includes(user)) {
-        previous.answeredQuestions.push(current.id)
-      }
-      else {
-        previous.unansweredQuestions.push(current.id)
-      }
-      return previous
-    }, {
-      unansweredQuestions: [],
-      answeredQuestions: []
-    })
-    return result
-  }
-
-  // const { unansweredQuestions, answeredQuestions } = useSelector(select)
+  const [showingUnanswered, toggleShowingUnanswered] = useState(true)
   const { unansweredQuestions, answeredQuestions } = useSelector(questionsIds)
 
-  return <div>
-    PRIVATE QUESTIONS PRIVATE
-    {/* TODO create some sort of conditional rendering
-    it has display unanswered by default but toggling must be a feature */}
-    <QuestionsList questionsIds={unansweredQuestions} type="Unanswered Questions" />
-    <QuestionsList questionsIds={answeredQuestions} type="Answered Questions"/>
-    {/* <AnsweredQuestions /> */}
-  </div>
+  const listToRender = showingUnanswered ?
+    <QuestionsList ids={unansweredQuestions} type="Unanswered Questions" />
+    :
+    <QuestionsList ids={answeredQuestions} type="Answered Questions" />
 
+  return <div>
+    <div>{listToRender}</div>
+    <button onClick={()=>toggleShowingUnanswered(!showingUnanswered)}>show {showingUnanswered ? "answered" : "unanswered"}</button>
+    
+  </div>
 }
 
 export default Questions

@@ -6,8 +6,8 @@ import Question from './Question';
 
 
 
-const QuestionsList = ({ questionsIds, type }) => {
-    const questionList = questionsIds.map(id => <Question key={id} id={id}>{id}</Question>)
+const QuestionsList = ({ ids, type }) => {
+    const questionList = ids.map(id => <Question key={id} id={id}>{id}</Question>)
     return <div>
       <h2>{type}</h2>
       {questionList}
@@ -15,7 +15,7 @@ const QuestionsList = ({ questionsIds, type }) => {
   }
 
   QuestionsList.propTypes = {
-    questionsIds: PropTypes.object.isRequired,
+    ids: PropTypes.object.isRequired,
     type: PropTypes.string.isRequired
   }
 
