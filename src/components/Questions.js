@@ -1,44 +1,9 @@
 /* eslint-disable no-unused-vars */
-/* eslint react/prop-types: 0 */
-
 
 import { React } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import PropTypes from 'prop-types';
-
-
-
-//TODO figure out why eslint does not like the proptypes
-//TODO remember all the proptypes palaver
-
-
-
-const Question = ({ id }) => {
-  const questionObj = useSelector(state => state.questions[id])
-  const { author, optionOne, optionTwo } = questionObj
-  const { votes: optionOneVotes, text: optionOneText } = optionOne
-  const { votes: optionTwoVotes, text: optionTwoText } = optionTwo
-
-  // console.log(optionOne, optionOneVotes, optionOneText)
-  return (<div><span style={{color:"gray"}}>Would you...
-    </span><div>1.{optionOneText}</div>
-    <div>2.{optionTwoText}</div>
-    <div>author: {author}</div>
-  </div>)
-}
-
-
-const QuestionsList = ({ questionsIds, type }) => {
-  const questionList = questionsIds.map(id => <Question key={id} id={id}>{id}</Question>)
-  return <div>
-    <h2>{type}</h2>
-    {questionList}
-  </div>
-}
-
-QuestionsList.PropTypes = {
-  questions: PropTypes.object.isRequired
-}
+import QuestionsList from './QuestionList';
+import { questionsIds } from '../features/questions/questions';
 
 const Questions = () => {
 
@@ -68,7 +33,8 @@ const Questions = () => {
     return result
   }
 
-  const { unansweredQuestions, answeredQuestions } = useSelector(select)
+  // const { unansweredQuestions, answeredQuestions } = useSelector(select)
+  const { unansweredQuestions, answeredQuestions } = useSelector(questionsIds)
 
   return <div>
     PRIVATE QUESTIONS PRIVATE

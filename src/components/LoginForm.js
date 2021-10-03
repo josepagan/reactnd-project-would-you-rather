@@ -12,7 +12,7 @@ const LoginForm = () => {
 
 
   const handleSelection = (event) => {
-    console.log("event/target/value", event.target.value)
+    // console.log("event/target/value", event.target.value)
     setUser(event.target.value)
   }
   const handleSubmit = (event) => {
