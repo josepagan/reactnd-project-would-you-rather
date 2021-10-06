@@ -9,6 +9,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import LoginForm from '../LoginForm';
 import NewQuestionForm from '../NewQuestionForm';
 import Questions from '../Questions';
+import QuestionPoll from '../QuestionPoll';
 
 
 
@@ -28,9 +29,14 @@ const MainContainer = () => {
         <Route exact path={"/login"}>
           {authed ? <Redirect to="/questions" /> : <LoginForm />}
         </Route>
+        <PrivateRoute path ={"/questions/:id"}>
+          <QuestionPoll />
+        </PrivateRoute>
+
         <PrivateRoute path={"/questions"}>
           <Questions />
         </PrivateRoute>
+
       </Switch>
     </Container>
   )

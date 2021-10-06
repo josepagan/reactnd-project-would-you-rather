@@ -2,21 +2,21 @@
 
 import React from "react";
 import PropTypes from 'prop-types';
-import Question from './Question';
+import QuestionPreview from './QuestionPreview';
 
 
 
-const QuestionsList = ({ ids, type }) => {
-    const questionList = ids.map(id => <Question key={id} id={id}>{id}</Question>)
+const QuestionsList = ({ ids, listName }) => {
+    const questionList = ids.map(id => <QuestionPreview key={id} id={id}>{id}</QuestionPreview>)
     return <div>
-      <h2>{type}</h2>
+      <h2>{listName}</h2>
       {questionList}
     </div>
   }
 
   QuestionsList.propTypes = {
     ids: PropTypes.object.isRequired,
-    type: PropTypes.string.isRequired
+    listName: PropTypes.string.isRequired
   }
 
   export default QuestionsList

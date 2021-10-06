@@ -4,7 +4,6 @@ import { React, useState } from 'react';
 import { useSelector } from 'react-redux'
 import QuestionsList from './QuestionList';
 import { questionsIds } from '../features/questions/questions';
-import { Button } from 'bootstrap';
 
 const Questions = () => {
 
@@ -12,9 +11,9 @@ const Questions = () => {
   const { unansweredQuestions, answeredQuestions } = useSelector(questionsIds)
 
   const listToRender = showingUnanswered ?
-    <QuestionsList ids={unansweredQuestions} type="Unanswered Questions" />
+    <QuestionsList ids={unansweredQuestions} listName="Unanswered Questions" />
     :
-    <QuestionsList ids={answeredQuestions} type="Answered Questions" />
+    <QuestionsList ids={answeredQuestions} listName="Answered Questions" />
 
   return <div>
     <div>{listToRender}</div>
