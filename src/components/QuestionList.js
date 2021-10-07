@@ -6,9 +6,9 @@ import QuestionPreview from './QuestionPreview';
 
 const QuestionsList = ({ ids, listName }) => {
     const questionList = ids.map(id => <QuestionPreview key={id} id={id}>{id}</QuestionPreview>)
-    return <div>
+    return <div >
       <h2>{listName}</h2>
-      {questionList}
+      <div className="questions-list">{questionList}</div>
     </div>
   }
 

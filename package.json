@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "eslint": "^7.28.0",
-    "eslint-plugin-react": "^7.24.0"
+    "eslint-plugin-react": "^7.24.0",
+    "svg-url-loader": "^7.1.1"
   }
 }

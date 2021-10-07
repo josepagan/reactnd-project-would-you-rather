@@ -4,7 +4,9 @@
 import { React, useEffect } from 'react';
 import { init } from './store/utils';
 import MainContainer from './components/layout/MainContainer'
-import NavBarMain from './components/layout/NavBarMain';
+import NavBarMain from './components/layout/NavBarMain'
+import Footer from './components/Footer';
+
 import './App.css'
 
 function App() {
@@ -14,10 +16,11 @@ function App() {
   }, [])
 
   return (
-    <>
+    <div className="App">
       <NavBarMain />
       <MainContainer />
-    </>
+      <Footer />
+    </div>
   );
 }
 

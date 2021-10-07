@@ -26,7 +26,7 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit}>
       <label>
         Pick your favorite flavor:
         <select value={user} onChange={handleSelection}>
