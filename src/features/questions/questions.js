@@ -22,7 +22,7 @@ export default function reducer(state = {}, action) {
     return state
 }
 //this selector probably creates a reference so i should use reselect 
-const questionsSelector = state => Object.values(state.questions)
+const questionsSelector = state => Object.values(state.questions).sort((a,b)=>a.timestamp - b.timestamp)
 const userSelector = state => state.auth
 
 export const questionsIds = createSelector([questionsSelector, userSelector],

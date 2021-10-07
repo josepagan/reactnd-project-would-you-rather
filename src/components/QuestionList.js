@@ -4,8 +4,6 @@ import React from "react";
 import PropTypes from 'prop-types';
 import QuestionPreview from './QuestionPreview';
 
-
-
 const QuestionsList = ({ ids, listName }) => {
     const questionList = ids.map(id => <QuestionPreview key={id} id={id}>{id}</QuestionPreview>)
     return <div>

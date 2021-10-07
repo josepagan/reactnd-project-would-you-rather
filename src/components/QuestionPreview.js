@@ -10,7 +10,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 const QuestionPreview = ({ id }) => {
     const questionObj = useSelector(state => state.questions[id])
-    const { author, optionOne, optionTwo } = questionObj
+    const { author, optionOne, optionTwo, timestamp} = questionObj
     const { votes: optionOneVotes, text: optionOneText } = optionOne
     const { votes: optionTwoVotes, text: optionTwoText } = optionTwo
 
@@ -21,6 +21,7 @@ const QuestionPreview = ({ id }) => {
             <div>1.{optionOneText}</div>
             <div>2.{optionTwoText}</div>
             <div>author: {author}</div>
+            <div>{timestamp}</div>
             <Link to={`/questions/${id}`}>Link to poll</Link>
         </div>
         )
