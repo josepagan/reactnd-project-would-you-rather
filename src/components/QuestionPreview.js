@@ -21,7 +21,7 @@ const QuestionPreview = ({ id }) => {
             <div>1.{optionOneText}</div>
             <div>2.{optionTwoText}</div>
             <div>author: {author}</div>
-            <div>{timestamp}</div>
+            {/* <div>{timestamp}</div> */}
             <Link to={`/questions/${id}`}>Link to poll</Link>
         </div>
         )
