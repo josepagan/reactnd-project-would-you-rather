@@ -17,7 +17,7 @@ const MainContainer = () => {
   const authed = useSelector(state => state.auth)
 
   return (
-    <Container >
+    <div >
       <div>main container</div>
       <Switch>
         <Route exact path="/">
@@ -29,7 +29,11 @@ const MainContainer = () => {
         <Route exact path={"/login"}>
           {authed ? <Redirect to="/questions" /> : <LoginForm />}
         </Route>
-        <PrivateRoute path ={"/questions/:id"}>
+        <PrivateRoute exact path ={"/questions/:id"}>
+          {/* QuestionPoll will pick the id from the URL(with useParams),
+          not sure if that conflicts with the store as single source of truth
+          maybe consider alternative as explained at
+          https://flaviocopes.com/react-router-data-from-route/  */}
           <QuestionPoll />
         </PrivateRoute>
 
@@ -38,7 +42,7 @@ const MainContainer = () => {
         </PrivateRoute>
 
       </Switch>
-    </Container>
+    </div>
   )
 }
 

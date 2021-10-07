@@ -5,6 +5,7 @@ import { React, useEffect } from 'react';
 import { init } from './store/utils';
 import MainContainer from './components/layout/MainContainer'
 import NavBarMain from './components/layout/NavBarMain';
+import './App.css'
 
 function App() {
  

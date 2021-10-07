@@ -8,7 +8,6 @@ import { Route, Redirect } from 'react-router-dom'
 
 const PrivateRoute = ({ children, ...rest }) => {
   let auth = useSelector(state => state.auth)
-  console.log("PrivateRoute auth:", auth)
 
   return (
     <Route
