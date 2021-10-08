@@ -13,16 +13,13 @@ const QuestionPreview = ({ id }) => {
     const { votes: optionOneVotes, text: optionOneText } = optionOne
     const { votes: optionTwoVotes, text: optionTwoText } = optionTwo
 
-    // console.log(optionOne, optionOneVotes, optionOneText)
     return (
         <div className="questionPreview">
             <div>{name} asks:</div>
             <img className="avatar" src={avatarURL} alt="test"/>
             {console.log("authorObj",authorObj)}
-            {/* TODO change from svg to proper images because this does ont work, delete svg package and all that */}
             <div>1.{optionOneText}</div>
             <div>2.{optionTwoText}</div>
-            {/* <div>{timestamp}</div> */}
             <Link to={`/questions/${id}`}>Link to poll</Link>
         </div>
         )

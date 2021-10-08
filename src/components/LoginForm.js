@@ -20,9 +20,7 @@ const LoginForm = () => {
       type: 'auth/authedUser',
       payload: user
     });
-
     event.preventDefault()
-
   }
 
   return (

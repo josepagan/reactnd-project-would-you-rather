@@ -17,8 +17,7 @@ const Questions = () => {
 
   return <div>
     <div>{listToRender}</div>
-    <button onClick={()=>toggleShowingUnanswered(!showingUnanswered)}>show {showingUnanswered ? "answered" : "unanswered"}</button>
-    
+    <button onClick={() => toggleShowingUnanswered(!showingUnanswered)}>show {showingUnanswered ? "answered" : "unanswered"}</button>
   </div>
 }
 
