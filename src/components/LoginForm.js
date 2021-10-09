@@ -6,8 +6,10 @@ const LoginForm = () => {
   const [user, setUser] = useState("")
   const dispatch = useDispatch()
 
-  const select = state => state.users
-  const users = Object.values(useSelector(select))
+  // const select = state => state.users
+  //TODO object.values likely create new references adding performance issues
+  //using reselect will solve the issue
+  const users = Object.values(useSelector(state => state.users))
   const optionsArray = users.map(user => <option key={user.id} value={user.id}>{user.name}</option>)
 
 

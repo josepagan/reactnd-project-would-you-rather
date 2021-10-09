@@ -30,8 +30,5 @@ export default function NavBarMain() {
         <NavUserInfo />
       </div>
     </div>
-
-
   )
-
 }
