@@ -82,6 +82,7 @@ const api = store => next => async action => {
     }
     catch (error) {
         dispatch({ type: onError, payload: error })
+        console.log("wtf")
     }
 
 }

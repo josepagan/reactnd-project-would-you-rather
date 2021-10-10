@@ -7,6 +7,7 @@ import PrivateRoute from '../routing/PrivateRoute';
 import LoginForm from '../LoginForm';
 import NewQuestionForm from '../NewQuestionForm';
 import Questions from '../Questions';
+import QuestionsList  from '../QuestionList';
 import QuestionPoll from '../QuestionPoll';
 
 const MainContainer = () => {
@@ -16,11 +17,11 @@ const MainContainer = () => {
     <div className="main-container" >
       <Switch>
         <Route exact path={"/login"}>
-          {authed ? <Questions /> : <LoginForm />}
+          {authed ? <QuestionsList /> : <LoginForm />}
         </Route>
         <PrivateRoute path={"/new-question"} component={NewQuestionForm}/>
         <PrivateRoute exact path ={"/questions/:id"} component={QuestionPoll}/>
-        <PrivateRoute exact path={["/questions","/"]} component={Questions}/>
+        <PrivateRoute exact path={["/questions","/"]} component={QuestionsList}/>
       </Switch>
     </div>
   )

@@ -111,3 +111,8 @@ button {
   /* width: 50%;
   min-height: 50vh; */
 }
+
+.new-question-form {
+  display:flex;
+  flex-direction: column;
+}
