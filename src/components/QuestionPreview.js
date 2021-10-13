@@ -17,10 +17,10 @@ const QuestionPreview = ({ id }) => {
         <div className="questionPreview">
             <div>{name} asks:</div>
             <img className="avatar" src={avatarURL} alt="test"/>
-            {console.log("authorObj",authorObj)}
             <div>1.{optionOneText}</div>
             <div>2.{optionTwoText}</div>
             <Link to={`/questions/${id}`}>Link to poll</Link>
+            {timestamp}
         </div>
         )
 }

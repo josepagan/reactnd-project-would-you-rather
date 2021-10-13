@@ -6,7 +6,6 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import PrivateRoute from '../routing/PrivateRoute';
 import LoginForm from '../LoginForm';
 import NewQuestionForm from '../NewQuestionForm';
-import Questions from '../Questions';
 import QuestionsList  from '../QuestionList';
 import QuestionPoll from '../QuestionPoll';
 

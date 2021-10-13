@@ -21,33 +21,20 @@ export default function reducer(state = {}, action) {
     }
     return state
 }
-//this selector probably creates a reference so i should use reselect
- 
-const questionsSelector = state => Object.values(state.questions).sort((a,b)=>a.timestamp - b.timestamp)
-const userSelector = state => state.auth
-// const questionSelector = state => state.questions[state.auth]
-const questionsSelector2 = state => state.questions
 
-export const questionsIds2 = createSelector([questionsSelector2],
-    (questions) => Object.keys(questions))
 
-export const questionsIds = createSelector([questionsSelector, userSelector],
-    (questions, user) => {
-        const result = questions.reduce((previous, current) => {
-            const questionAnswerers = [...current.optionOne.votes, ...current.optionTwo.votes]
-            if (questionAnswerers.includes(user)) {
-                previous.answeredQuestions.push(current.id)
-            }
-            else {
-                previous.unansweredQuestions.push(current.id)
-            }
-            return previous
-        }, {
-            unansweredQuestions: [],
-            answeredQuestions: []
-        })
-        return result
+//create an array with the ids of all the questions, then sort the array based
+//on the timestamp of each question
+
+const questionsSelector = state => state.questions
+export const questionsIds = createSelector([questionsSelector],
+    (questions) => {
+        const questionsIdArray = Object.keys(questions)
+        const sortedByTimestamp = questionsIdArray.sort((a,b) => questions[a].timestamp - questions[b].timestamp)
+        return sortedByTimestamp
     }
+
 )
+
 
 export const isQuestionAnswered = createSelector()
