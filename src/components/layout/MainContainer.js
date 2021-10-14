@@ -18,7 +18,7 @@ const MainContainer = () => {
         <Route exact path={"/login"} component={LoginForm}/>
         <PrivateRoute path={"/new-question"} component={NewQuestionForm}/>
         <PrivateRoute exact path ={"/questions/:id"} component={QuestionPoll}/>
-        <PrivateRoute exact path={["/questions","/"]} component={QuestionsList}/>
+        <PrivateRoute exact path={["/"]} component={QuestionsList}/>
       </Switch>
     </div>
   )

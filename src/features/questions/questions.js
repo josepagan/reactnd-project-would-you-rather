@@ -30,7 +30,7 @@ const questionsSelector = state => state.questions
 export const questionsIds = createSelector([questionsSelector],
     (questions) => {
         const questionsIdArray = Object.keys(questions)
-        const sortedByTimestamp = questionsIdArray.sort((a,b) => questions[a].timestamp - questions[b].timestamp)
+        const sortedByTimestamp = questionsIdArray.sort((a,b) => questions[b].timestamp - questions[a].timestamp)
         return sortedByTimestamp
     }
 
