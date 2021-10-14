@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom'
 
 
-const PrivateRoute = ({ component:Component, ...rest }) => {
+const PrivateRoute = ({ component:Component,location, ...rest }) => {
   let auth = useSelector(state => state.auth)
 
   return (
@@ -19,7 +19,10 @@ const PrivateRoute = ({ component:Component, ...rest }) => {
         <Component {...rest}/> 
         : (
           <Redirect
-            to={"/login"}
+            to={{
+              pathname: "/login",
+              state: { from: location }
+            }}
           />
         )
       }

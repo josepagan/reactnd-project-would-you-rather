@@ -15,9 +15,7 @@ const MainContainer = () => {
   return (
     <div className="main-container" >
       <Switch>
-        <Route exact path={"/login"}>
-          {authed ? <QuestionsList /> : <LoginForm />}
-        </Route>
+        <Route exact path={"/login"} component={LoginForm}/>
         <PrivateRoute path={"/new-question"} component={NewQuestionForm}/>
         <PrivateRoute exact path ={"/questions/:id"} component={QuestionPoll}/>
         <PrivateRoute exact path={["/questions","/"]} component={QuestionsList}/>
