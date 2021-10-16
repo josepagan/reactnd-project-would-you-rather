@@ -18,7 +18,7 @@ export default function NavBarMain() {
       <NavLink
         className="nav-el"
         activeClassName="active"
-        to={"/new-question"}
+        to={"/add"}
       >New Question</NavLink>
       <NavLink
         className="nav-el leaderboard"
