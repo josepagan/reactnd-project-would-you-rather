@@ -86,6 +86,12 @@ body {
  height: 50px;
  background-color: white;
 }
+.avatar-large {
+  height: 100px;
+  background-color: white;
+  border-style: solid;
+  border-width: 10px;
+}
 
 button {
   border-radius: 4px;
