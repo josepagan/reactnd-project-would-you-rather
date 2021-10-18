@@ -122,3 +122,8 @@ button {
   display:flex;
   flex-direction: column;
 }
+
+.form-answer {
+  display: flex;
+  flex-direction: column;
+}
