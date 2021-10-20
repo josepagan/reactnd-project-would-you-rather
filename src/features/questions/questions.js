@@ -18,6 +18,12 @@ export default function reducer(state = {}, action) {
                 newState[action.payload.id] = action.payload
             })
         }
+        case 'questions/questionAnswered':{
+            const {authedUser, qid, answer } = action.payload
+            return produce(state, (newState) => {
+                newState[qid][answer].votes.push(authedUser)
+            })
+        }
     }
     return state
 }

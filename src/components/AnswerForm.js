@@ -1,17 +1,23 @@
 import { React, useState } from "react";
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from "react-redux";
+import { apiCallBegan } from "../store/api";
 
 // import { useDispatch } from "react-redux";
 
 const AnswerForm = ({id: qid, optionOneText, optionTwoText, avatarURL }) => {
     const dispatch = useDispatch()
-    const authedUser = useSelector(state => state.auth)
-    
-    const [choice, setChoice] = useState(undefined)
-    const handleChange = e => { setChoice(e.target.value) }
+    const authedUser = useSelector(state => state.auth)    
+    const [answer, setAnswer] = useState(undefined)
+    const handleChange = e => { setAnswer(e.target.value) }
     const handleSubmit = (e) => { 
-        console.log("submitted:", choice)
+        dispatch(apiCallBegan({
+            callMethodName: '_saveQuestionAnswer',
+            data: {authedUser, qid, answer },
+            onSuccess: ['users/questionAnswered','questions/questionAnswered'],
+            onError: 'apiRequestfailed'
+          }
+          ))
         //TODO complete all this shit
         // dispatch() 
         e.preventDefault()
@@ -26,13 +32,13 @@ const AnswerForm = ({id: qid, optionOneText, optionTwoText, avatarURL }) => {
             {/* TODO mess with css to vertically align labels with the input */}
             <form onSubmit={handleSubmit} className="form-answer">
                 <div>
-                    <input type="radio" value="choice-1" id="choice-1"
+                    <input type="radio" value="optionOne" id="optionOne"
                         onChange={handleChange} name="question" />
-                    <label htmlFor="choice-1">{optionOneText}</label>
+                    <label htmlFor="optionOne">{optionOneText}</label>
                 </div>
-                <input type="radio" value="choice-2" id="choice-2"
+                <input type="radio" value="optionTwo" id="optionTwo"
                     onChange={handleChange} name="question" />
-                <label htmlFor="choice-2">{optionTwoText}</label>
+                <label htmlFor="optionTwo">{optionTwoText}</label>
                 <input type="submit" />
             </form>
         </div>
@@ -40,6 +46,7 @@ const AnswerForm = ({id: qid, optionOneText, optionTwoText, avatarURL }) => {
 }
 
 AnswerForm.propTypes = {
+    id: PropTypes.string.isRequired,
     optionOneText: PropTypes.string.isRequired,
     optionTwoText: PropTypes.string.isRequired,
     avatarURL: PropTypes.string
