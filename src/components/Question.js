@@ -18,11 +18,13 @@ const Question = ({ id }) => {
     const isQuestionAnswered = useSelector(select)
 
 
-    //shamelesly copypasted from Question, consider better pattern
     const questionObj = useSelector(state => state.questions[id])
     const { author, optionOne, optionTwo, timestamp } = questionObj
     const authorObj = useSelector(state => state.users[author])
-    const { avatarURL, name } = authorObj
+    const option = useSelector(state => state.users[state.auth].answers[id])
+    
+    const { avatarURL, name, answers } = authorObj
+    console.log("OPTION", option)
     const { votes: optionOneVotes, text: optionOneText } = optionOne
     const { votes: optionTwoVotes, text: optionTwoText } = optionTwo
     const optionOneVotesCount = optionOneVotes.length
@@ -31,7 +33,7 @@ const Question = ({ id }) => {
 
     //TODO I actually have to split this , if the qestion has been answered return <FOrm>
     //if not, return display with all the data as props, that would make much more sense
-    const props = {id, author, name, avatarURL, optionOneText, optionOneVotesCount, optionTwoText, optionTwoVotesCount}
+    const props = {id, author, name, avatarURL, optionOneText, optionOneVotesCount, optionTwoText, optionTwoVotesCount, option}
 
     return isQuestionAnswered ? <QuestionDetails {...props} /> : <AnswerForm {...props} />
     

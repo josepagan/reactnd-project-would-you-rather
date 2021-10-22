@@ -127,3 +127,17 @@ button {
   display: flex;
   flex-direction: column;
 }
+
+.option {
+  padding: 20px;
+}
+.red-border {
+  border-style: solid;
+  border-color: red;
+}
+
+.option-voted {
+  color: red;
+  font-size: medium;
+  font-weight: bolder;
+}
