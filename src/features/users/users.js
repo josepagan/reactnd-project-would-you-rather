@@ -1,11 +1,11 @@
-// import { QuestionAnswer } from '@material-ui/icons';
 /* eslint-disable no-unused-vars */
 
 
-// import produce from 'immer';
 //Action types
 
 import produce from "immer"
+import { createSelector } from 'reselect'
+
 
 //const BUG_ADDED="bugAdded"
 
@@ -52,6 +52,22 @@ export default function reducer(state={} ,action){
 
 }
 
+
+const usersSelector = state => state.users
+export const leaderboardArray = createSelector([usersSelector],
+    (users)=> {
+        const usersArray = Object.values(users)
+        const sortedByScore = usersArray.sort((a,b)=>{
+            const userScore = (user) => Object.keys(user.answers).length + user.questions.length
+            return userScore(b) - userScore(a)
+        })
+
+        return sortedByScore
+
+        // const testMap = usersArray.map(el=> Object.keys(el.answers).length)
+        // return testMap
+
+    })
 //export default function reducer(state={}, action)
 //switch(action.type) {
 // case BUG_ADDED:

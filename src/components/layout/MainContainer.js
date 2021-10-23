@@ -9,6 +9,7 @@ import NewQuestionForm from '../NewQuestionForm';
 import QuestionsList  from '../QuestionList';
 import QuestionRoute from '../QuestionRoute';
 import Page404 from '../page404';
+import Leaderboard from '../Leaderboard';
 
 const MainContainer = () => {
   // const authed = useSelector(state => state.auth)
@@ -18,6 +19,7 @@ const MainContainer = () => {
       <Switch>
         <Route exact path={"/login"} component={LoginForm}/>
         <Route exact path={"/404"} component={Page404}/>
+        <Route exact path={"/leaderboard"} component={Leaderboard}/>
         <PrivateRoute path={"/add"} component={NewQuestionForm}/>
         <PrivateRoute exact path ={"/questions/:id"} component={QuestionRoute}/>
         <PrivateRoute exact path={["/"]} component={QuestionsList}/>
