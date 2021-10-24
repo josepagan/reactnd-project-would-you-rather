@@ -1,10 +1,19 @@
-import {React} from "react";
+import { React } from "react";
 import { useSelector } from "react-redux";
 import { leaderboardArray } from "../features/users/users";
+import LeaderboardRow from "./LeaderboardRow";
+
 const Leaderboard = () => {
     const users = useSelector(leaderboardArray)
     console.log(users)
-    //TODO use selector from reducer
-    return <div>Leaderboard</div>
+    const leaderboardList = users.map((user, index) => {
+        // const index = 0
+        const rank = index + 1
+        return <LeaderboardRow key={user} id={user} rank={rank}/>
+    })
+    return <div>{leaderboardList}</div>
+    
 }
+
+
 export default Leaderboard

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from "react-redux";
 import { apiCallBegan } from "../store/api";
 
-// import { useDispatch } from "react-redux";
-
 const AnswerForm = ({id: qid, optionOneText, optionTwoText, avatarURL }) => {
     const dispatch = useDispatch()
     const authedUser = useSelector(state => state.auth)    
@@ -13,13 +11,11 @@ const AnswerForm = ({id: qid, optionOneText, optionTwoText, avatarURL }) => {
     const handleSubmit = (e) => { 
         dispatch(apiCallBegan({
             callMethodName: '_saveQuestionAnswer',
-            data: {authedUser, qid, answer },
+            data: { authedUser, qid, answer },
             onSuccess: ['users/questionAnswered','questions/questionAnswered'],
             onError: 'apiRequestfailed'
           }
           ))
-        //TODO complete all this shit
-        // dispatch() 
         e.preventDefault()
     }
     return (

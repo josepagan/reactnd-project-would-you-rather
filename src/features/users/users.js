@@ -62,7 +62,8 @@ export const leaderboardArray = createSelector([usersSelector],
             return userScore(b) - userScore(a)
         })
 
-        return sortedByScore
+        const sortedByScoreIds = sortedByScore.map(user => user.id)
+        return sortedByScoreIds
 
         // const testMap = usersArray.map(el=> Object.keys(el.answers).length)
         // return testMap
