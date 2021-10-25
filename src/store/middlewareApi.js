@@ -1,40 +1,7 @@
 /* eslint-disable no-unused-vars */
 
-//TODO delete all these old methods once im sure they are not necesary
 import { _getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer } from '../_DATA'
 
-// const callGetQuestions = async (dispatch, onSuccess, onError) => {
-//     try {
-//         //add here a switch case with method so depending of get or whatever
-//         const response = await _getQuestions()
-//         dispatch({ type: onSuccess, payload: response })
-//     }
-//     catch (error) {
-//         dispatch({ type: onError, payload: error })
-//     }
-// }
-
-// const callSaveQuestion = async (data, dispatch, onSuccess, onError) => {
-//     try {
-//         const { question } = data
-//         //add here a switch case with method so depending of get or whatever
-//         const response = await _saveQuestion(question)
-//         dispatch({ type: onSuccess, payload: response })
-//     }
-//     catch (error) {
-//         dispatch({ type: onError, payload: error })
-//     }
-// }
-
-// const callSaveQuestionAnswer = async (data, dispatch, onSuccess, onError) => {
-//     try {
-//         const { answer } = data
-//         //add here a switch case with method so depending of get or whatever
-//         const response = await _saveQuestionAnswer(answer)
-
-//         //we dont get anything from server so we will use the data from apiCallBegan  to fill the state.
-//         //that means that the data on the website will only be update once the onSuccess dispatch happens, so there will be
-//         //a delay
 //         //TODO consider to change the design to 'optimistic' so the store update  happens first 
 //         // and get an error message afterwards if we dont get a positive 
 //         //response from the server.

@@ -5,9 +5,7 @@ import LeaderboardRow from "./LeaderboardRow";
 
 const Leaderboard = () => {
     const users = useSelector(leaderboardArray)
-    console.log(users)
     const leaderboardList = users.map((user, index) => {
-        // const index = 0
         const rank = index + 1
         return <LeaderboardRow key={user} id={user} rank={rank}/>
     })
