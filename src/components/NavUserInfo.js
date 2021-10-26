@@ -17,7 +17,7 @@ const NavUserInfo = () => {
 
     return authedUser ?
         <div className="user-name">
-            <div>Signed in as: {authedUser && authedUser.name}</div>
+            <div>Signed in as:  {authedUser && authedUser.name}  </div>
             <button onClick={handleClick}>Logout</button>
         </div>
         :

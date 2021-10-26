@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const QuestionPreview = ({ id }) => {
     const questionObj = useSelector(state => state.questions[id])
-    const { author, optionOne, optionTwo, timestamp} = questionObj
+    const { author, optionOne, optionTwo } = questionObj
     const authorObj = useSelector(state => state.users[author])
     const {avatarURL, name} = authorObj
     const { votes: optionOneVotes, text: optionOneText } = optionOne
@@ -19,11 +19,10 @@ const QuestionPreview = ({ id }) => {
     return (
         <div className="questionPreview">
             <div>{name} asks:</div>
-            <img className="avatar" src={avatarURL} alt="test"/>
+            <img className="avatar" src={avatarURL} alt="avatar"/>
             <div>1.{optionOneText}</div>
             <div>2.{optionTwoText}</div>
-            <Link to={`/questions/${id}`}>Link to poll</Link>
-            {timestamp}
+            <Link to={`/questions/${id}`}><button className="button-poll">POLL</button></Link>
         </div>
         )
 }

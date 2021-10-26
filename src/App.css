@@ -97,6 +97,11 @@ button {
   border-radius: 4px;
 }
 
+.button-poll {
+  background-color: var(--gold-fusion);
+  color: white;
+}
+
 .questionPreview {
   border-style: dashed;
   max-width: 300px;
