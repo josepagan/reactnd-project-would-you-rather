@@ -13,7 +13,7 @@ export default function NavBarMain() {
       <NavLink
         className="nav-el"
         activeClassName="active"
-        to={"/"
+        exact to={"/"
         }>Questions</NavLink>
       <NavLink
         className="nav-el"

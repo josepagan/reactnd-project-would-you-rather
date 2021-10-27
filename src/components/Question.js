@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { useSelector } from "react-redux"
 import QuestionDetails from "./QuestionDetails";
-import AnswerForm from "./AnswerForm";
+import PollForm from "./PollForm";
 
 
 const Question = ({ id }) => {
@@ -28,7 +28,7 @@ const Question = ({ id }) => {
 
     const props = {id, author, name, avatarURL, optionOneText, optionOneVotesCount, optionTwoText, optionTwoVotesCount, option}
 
-    return isQuestionAnswered ? <QuestionDetails {...props} /> : <AnswerForm {...props} />
+    return isQuestionAnswered ? <QuestionDetails {...props} /> : <PollForm {...props} />
     
     
 }

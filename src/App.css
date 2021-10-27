@@ -58,7 +58,7 @@ body {
 .topnav > .login {
   margin-left: auto;
 }
-.topnav .nav-el:hover {
+.topnav .nav-el:hover:not(:last-child) {
   background-color: #ddd;
   opacity: 0.5;
   color: black;
@@ -151,4 +151,23 @@ button {
   color: red;
   font-size: medium;
   font-weight: bolder;
+}
+
+.poll {
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+}
+
+.radio-inputs {
+  font-size: larger;
+  font-weight: bolder;
+  margin-left: 20px;
+}
+.option-one {
+  margin-bottom: 10px;
+}
+.submit-button {
+  margin-top: 10px;
+  border-radius: 4px;
 }
