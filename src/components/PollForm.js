@@ -8,7 +8,7 @@ const PollForm = ({ id: qid, optionOneText, optionTwoText, avatarURL }) => {
     const authedUser = useSelector(state => state.auth)
     const [answer, setAnswer] = useState(undefined)
     const handleChange = e => { setAnswer(e.target.value) }
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         dispatch(apiCallBegan({
             callMethodName: '_saveQuestionAnswer',
             data: { authedUser, qid, answer },
@@ -21,15 +21,11 @@ const PollForm = ({ id: qid, optionOneText, optionTwoText, avatarURL }) => {
     return (
         <div>
             <div>
-
                 <h2>Would you rather...</h2>
                 <div className="poll">
                     <img className="avatar-large" src={avatarURL} alt="test" />
-
-                    {/* TODO mess with css to vertically align labels with the input */}
                     <form onSubmit={handleSubmit} className="form-answer">
                         <div className="radio-inputs">
-
                             <div className="option-one">
                                 <input type="radio" value="optionOne" id="optionOne"
                                     onChange={handleChange} name="question" />
@@ -40,7 +36,7 @@ const PollForm = ({ id: qid, optionOneText, optionTwoText, avatarURL }) => {
                                     onChange={handleChange} name="question" />
                                 <label htmlFor="optionTwo">{optionTwoText}</label>
                             </div>
-                        <input className="submit-button" type="submit" />
+                            <input className="submit-button" type="submit" />
                         </div>
                     </form>
                 </div>
