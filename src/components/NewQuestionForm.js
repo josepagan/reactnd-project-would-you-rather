@@ -4,6 +4,7 @@
 import { React, useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { apiCallBegan } from "../store/api"
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min"
 
 const NewQuestionForm = () => {
 
@@ -12,6 +13,7 @@ const NewQuestionForm = () => {
   const author = useSelector(state => state.auth)
   const submitted = useSelector(state => state.form)
   const dispatch = useDispatch()
+
 
 
   const handleSubmit = e => {
@@ -34,12 +36,16 @@ const NewQuestionForm = () => {
     };
   }, [])
 
-  return (
+
+
+
+  return submitted ? <Redirect to="/"/> :  (
     <div>
       <form className="new-question-form"
         onSubmit={handleSubmit}
       >
         <div className="form-answer">
+          <h3>Would you rather?...</h3>
           <label>1.
             <input type="text"
               value={optionOneText}
