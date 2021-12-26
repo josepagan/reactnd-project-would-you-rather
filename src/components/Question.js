@@ -15,7 +15,11 @@ const Question = ({ id }) => {
     const isQuestionAnswered = useSelector(select)
 
 
+
     const questionObj = useSelector(state => state.questions[id])
+
+    //extract all data needed to render either component
+    
     const { author, optionOne, optionTwo } = questionObj
     const authorObj = useSelector(state => state.users[author])
     const option = useSelector(state => state.users[state.auth].answers[id])

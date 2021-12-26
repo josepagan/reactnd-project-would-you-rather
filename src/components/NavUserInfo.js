@@ -14,11 +14,10 @@ const NavUserInfo = () => {
         history.push("/")
     }
 
-
     return authedUser ?
         <div className="user-name">
             <div>Signed in as:  {authedUser && authedUser.name}  </div>
-            <button onClick={handleClick}>Logout</button>
+            <button className="logout-button" onClick={handleClick}>Logout</button>
         </div>
         :
         <div>Not Logged in</div>

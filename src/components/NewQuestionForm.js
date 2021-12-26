@@ -27,7 +27,7 @@ const NewQuestionForm = () => {
 
   useEffect(() => {
     return () => {
-      //dispatch form resett here.
+      //dispatch form reset.
       dispatch({
         type: 'form/formReset'
       })
@@ -36,22 +36,22 @@ const NewQuestionForm = () => {
 
   return (
     <div>
-
       <form className="new-question-form"
         onSubmit={handleSubmit}
       >
-        NEW QUESTION FORM HERE
-        <label>1.
-          <input type="text"
-            value={optionOneText}
-            onChange={(e) => setOptionOneText(e.target.value)} />
-        </label>
-        <label>2.
-          <input type="text"
-            value={optionTwoText}
-            onChange={(e) => setOptionTwoText(e.target.value)} />
-        </label>
-        <input type="submit" disabled={submitted}/>
+        <div className="form-answer">
+          <label>1.
+            <input type="text"
+              value={optionOneText}
+              onChange={(e) => setOptionOneText(e.target.value)} />
+          </label>
+          <label>2.
+            <input type="text"
+              value={optionTwoText}
+              onChange={(e) => setOptionTwoText(e.target.value)} />
+          </label>
+          <input className="submit-button" type="submit" disabled={submitted} />
+        </div>
       </form>
       {submitted && "Thanks for submitting this question!"}
     </div>

@@ -170,4 +170,21 @@ button {
 .submit-button {
   margin-top: 10px;
   border-radius: 4px;
+  font-weight: bold ;
+}
+.percentage {
+  border-style: solid;
+  border-radius: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding: 3px;
+  padding-right: 6px;
+  background-color: #444;
+  color: white;
+}
+.logout-button {
+  margin-left: 5px;
+}
+.submit-button {
+  max-width: 150px;
 }

@@ -38,6 +38,7 @@ const api = store => next => async action => {
     try {
         //TODO consider to make it optimistic (first update store, then if data all right let it go if not get error)
         //callMethodName(string) gets the right method reference from apicalls
+        //if we had to call a proper backend we would use a switch wih proper callings
         const response = await apiCalls[callMethodName](data)
         onSuccess.forEach(element => {
             dispatch({ type: element, payload: response })

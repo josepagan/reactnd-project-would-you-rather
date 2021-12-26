@@ -5,9 +5,6 @@ import { useSelector } from "react-redux";
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
-
-
-
 const QuestionPreview = ({ id }) => {
     const questionObj = useSelector(state => state.questions[id])
     const { author, optionOne, optionTwo } = questionObj

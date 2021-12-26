@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import QuestionPreview from './QuestionPreview';
 import { questionsIds } from '../features/questions/questions';
 import { useSelector } from "react-redux";
@@ -13,13 +13,15 @@ const QuestionsList = () => {
   const ids = useSelector(questionsIds)
 
   const questionList = ids
-  //answer truthy of falseyness will be compared against showing unanswered variable
+    //answer truthy of falseyness will be compared against showing unanswered variable
     .filter(id => userAnswers[id] ? !showingUnanswered : showingUnanswered)
-    .map(id => <QuestionPreview key={id} id={id}/>)
+    .map(id => <QuestionPreview key={id} id={id} />)
 
   return <div >
-    <h2>{showingUnanswered ? "Unanswered Questions" : "Answered Questions"}</h2>
-    <button onClick={() => toggleShowingUnanswered(!showingUnanswered)}>show {showingUnanswered ? "answered" : "unanswered"}</button>
+    <div style={{display:"flex",direction:"row", alignItems:"center", gap:"20px"}}>
+      <h2>{showingUnanswered ? "Unanswered Questions" : "Answered Questions"}</h2>
+      <button onClick={() => toggleShowingUnanswered(!showingUnanswered)}>show {showingUnanswered ? "answered" : "unanswered"}</button>
+    </div>
     <div className="questions-list">{questionList}</div>
   </div>
 }

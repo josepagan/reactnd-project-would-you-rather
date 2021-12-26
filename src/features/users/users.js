@@ -43,7 +43,6 @@ export default function reducer(state={} ,action){
                 newState[authedUser].answers[qid]=answer
             }))
 
-            //TODO maybe here i have to dispatch to quiestons to add the voted users to the list???
 
         }
         default:
@@ -54,6 +53,7 @@ export default function reducer(state={} ,action){
 
 
 const usersSelector = state => state.users
+//array with id of users in score order
 export const leaderboardArray = createSelector([usersSelector],
     (users)=> {
         const usersArray = Object.values(users)

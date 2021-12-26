@@ -22,7 +22,7 @@ const MainContainer = () => {
         <Route exact path={"/leaderboard"} component={Leaderboard}/>
         <PrivateRoute path={"/add"} component={NewQuestionForm}/>
         <PrivateRoute exact path ={"/questions/:id"} component={QuestionRoute}/>
-        <PrivateRoute exact path={["/"]} component={QuestionsList}/>
+        <PrivateRoute path={["/"]} component={QuestionsList}/>
       </Switch>
     </div>
   )
